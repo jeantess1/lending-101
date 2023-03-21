@@ -3,14 +3,16 @@
 
 var TDErc20 = artifacts.require("ERC20TD.sol");
 var evaluator = artifacts.require("Evaluator.sol");
+var solution = artifacts.require("ExerciceSolution.sol");
 
 
 module.exports = (deployer, network, accounts) => {
     deployer.then(async () => {
-        await deployTDToken(deployer, network, accounts); 
-        await deployEvaluator(deployer, network, accounts); 
-        await setPermissionsAndRandomValues(deployer, network, accounts); 
-        await deployRecap(deployer, network, accounts); 
+        //await deployTDToken(deployer, network, accounts); 
+    	//await deployEvaluator(deployer, network, accounts); 
+        //await setPermissionsAndRandomValues(deployer, network, accounts); 
+        //await deployRecap(deployer, network, accounts);
+		await deploySolution(deployer, network , accounts); 
     });
 };
 
@@ -33,6 +35,10 @@ async function setPermissionsAndRandomValues(deployer, network, accounts) {
 async function deployRecap(deployer, network, accounts) {
 	console.log("TDToken " + TDToken.address)
 	console.log("Evaluator " + Evaluator.address)
+}
+async function deploySolution(deployer,network,accounts){
+	kek = await solution.new()
+	console.log("MySolution  "+ kek.address)
 }
 
 
